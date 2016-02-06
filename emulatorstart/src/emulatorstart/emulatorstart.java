@@ -1,0 +1,93 @@
+package emulatorstart;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.*;
+public class emulatorstart {
+
+private static Robot robot = null;
+    
+    public static void main(String[] args) throws Exception{
+        
+        robot = new Robot();
+        //place the emulator in the top right corner with Mortal Kombat 3 already running otherwise it won't work
+        klick (1500,20);
+        doubleklick (1500,80);
+        Keycombination(KeyEvent.VK_ALT,KeyEvent.VK_ENTER);
+        robot.delay(4000);
+        doubleklick(800,600);
+        robot.delay(1000);
+        PressKey(KeyEvent.VK_ENTER);
+        System.out.println("enter clicked");
+        robot.delay(1000);
+        PressKey(KeyEvent.VK_ENTER);
+        robot.delay(3000);
+        PressKey(KeyEvent.VK_A);
+        robot.delay(4000);
+        PressKey(KeyEvent.VK_ENTER);
+        robot.delay(21000);
+        //taking a screenshot and saving it to the desktop
+        Screenshot();
+        
+    }
+    
+    public static void klick (int x, int y)
+    {
+        robot.mouseMove(x, y);
+        robot.delay(100);
+        robot.mousePress(MouseEvent.BUTTON1_MASK);
+        robot.mouseRelease(MouseEvent.BUTTON1_MASK);
+        robot.delay(100);
+    }
+    
+    public static void doubleklick (int x, int y)
+    {
+        robot.mouseMove(x, y);
+        robot.delay(100);
+        robot.mousePress(MouseEvent.BUTTON1_MASK);
+        robot.mouseRelease(MouseEvent.BUTTON1_MASK);
+        robot.delay(10);
+        robot.mousePress(MouseEvent.BUTTON1_MASK);
+        robot.mouseRelease(MouseEvent.BUTTON1_MASK);
+        robot.delay(1000);
+    }
+    
+    public static void PressKey (int k)
+    {
+        robot.keyPress(k);
+        robot.delay(50);
+        robot.keyRelease(k);
+    }
+    
+    public static void Keycombination (int k, int l)
+    {
+        robot.keyPress(k);
+        robot.delay(10);
+        robot.keyPress(l);
+        robot.keyRelease(l);
+        robot.keyRelease(k);
+        robot.delay(4000);
+    }
+  
+    
+    public static void Screenshot () throws Exception
+    {
+        //getting the screensize
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+	Dimension screenSize = toolkit.getScreenSize();
+        //making a rectangle which fills the whole screen
+        Rectangle screenRect = new Rectangle(screenSize);
+        //making a screenshot and saving it to the desktop
+        BufferedImage image;
+        image = robot.createScreenCapture(screenRect);
+        File file = new File("C:\\Users\\Carlo\\Desktop\\scr.png");
+        if(!file.exists())
+        file.createNewFile();
+        FileOutputStream fos = new FileOutputStream(file);
+        ImageIO.write( image, "png", fos );
+        
+    }
+     
+}
