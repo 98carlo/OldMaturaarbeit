@@ -1,26 +1,36 @@
 package emulatorstart;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.*;
+
+
 public class emulatorstart {
 
 private static Robot robot = null;
     
     public static void main(String[] args) throws Exception{
-        
+    	
         robot = new Robot();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width2 = screenSize.getWidth();
+		int width = (int) width2;
+		double height2 = screenSize.getHeight();
+		int height = (int) height2;
         //place the emulator in the top right corner with Mortal Kombat 3 already running otherwise it won't work
-        klick (1500,20);
-        doubleklick (1500,80);
+        klick (width-(width/15),20);
+        doubleklick (width-(width/15),80);
         Keycombination(KeyEvent.VK_ALT,KeyEvent.VK_ENTER);
         robot.delay(4000);
-        doubleklick(800,600);
+        doubleklick(width/2,height/2);
         robot.delay(1000);
         PressKey(KeyEvent.VK_ENTER);
-        System.out.println("enter clicked");
+        //System.out.println("enter clicked");
         robot.delay(1000);
         PressKey(KeyEvent.VK_ENTER);
         robot.delay(3000);
@@ -29,9 +39,10 @@ private static Robot robot = null;
         PressKey(KeyEvent.VK_ENTER);
         robot.delay(21000);
         //taking a screenshot and saving it to the desktop
-        Screenshot();
+        BufferedImage image = Screenshot();
         
     }
+   
     
     public static void klick (int x, int y)
     {
@@ -72,22 +83,24 @@ private static Robot robot = null;
     }
   
     
-    public static void Screenshot () throws Exception
+    public static BufferedImage Screenshot () throws Exception
     {
         //getting the screensize
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-	Dimension screenSize = toolkit.getScreenSize();
+        Dimension screenSize = toolkit.getScreenSize();
         //making a rectangle which fills the whole screen
         Rectangle screenRect = new Rectangle(screenSize);
         //making a screenshot and saving it to the desktop
         BufferedImage image;
         image = robot.createScreenCapture(screenRect);
-        File file = new File("C:\\Users\\Carlo\\Desktop\\scr.png");
+        File file = new File("C:\\Users\\Carlo\\Documents\\GitHub\\Maturaarbeit\\emulatorstart\\scr\\scr.png");
         if(!file.exists())
         file.createNewFile();
         FileOutputStream fos = new FileOutputStream(file);
         ImageIO.write( image, "png", fos );
+        return image;
         
     }
+    
      
 }
