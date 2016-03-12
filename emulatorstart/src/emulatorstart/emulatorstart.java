@@ -39,7 +39,7 @@ private static Robot robot = null;
         PressKey(KeyEvent.VK_ENTER);
         robot.delay(21000);
         //taking a screenshot and saving it to the desktop
-        BufferedImage image = Screenshot();
+        Screenshot();
         
     }
    
@@ -83,23 +83,25 @@ private static Robot robot = null;
     }
   
     
-    public static BufferedImage Screenshot () throws Exception
+    
+    public static void /*BufferedImage*/ Screenshot () throws Exception
     {
         //getting the screensize
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();
         //making a rectangle which fills the whole screen
+        //need to get the screenSize again because otherwise it makes the screenshot a lot smaller
         Rectangle screenRect = new Rectangle(screenSize);
         //making a screenshot and saving it to the desktop
         BufferedImage image;
         image = robot.createScreenCapture(screenRect);
-        File file = new File("C:\\Users\\Carlo\\Documents\\GitHub\\Maturaarbeit\\emulatorstart\\scr\\scr.png");
+        File file = new File("C:\\Users\\carlo\\Desktop\\Maturaarbeit\\Screenshots\\scr.png");
         if(!file.exists())
         file.createNewFile();
         FileOutputStream fos = new FileOutputStream(file);
         ImageIO.write( image, "png", fos );
-        return image;
-        
+        System.out.println("Screenshot");
+        //return image;       
     }
     
      
