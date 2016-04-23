@@ -8,11 +8,11 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 public class MatchTemplate {
-	
+	static final String filepath = "/Users/carlo/Maturaarbeit/Screenshots/";
 	public static void main(String[] args) throws Exception {
 		//importing library and images
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-		new matching().run("C:\\Users\\carlo\\Desktop\\Maturaarbeit\\Screenshots\\scr.jpg", "C:\\Users\\carlo\\Desktop\\Maturaarbeit\\Screenshots\\Shang.jpg", "C:\\Users\\carlo\\Desktop\\Maturaarbeit\\Screenshots\\result.jpg", Imgproc.TM_CCOEFF);
+		new matching().run(filepath + "scr.jpg", filepath + "Shang.jpg", filepath + "result.jpg", Imgproc.TM_CCOEFF);
 	}
 }	
 
@@ -20,7 +20,7 @@ class matching
 {
 	public void run(String inFile, String templateFile, String outFile, int match_method) throws Exception
 	{
-		System.out.println("hi");
+		//System.out.println("hi");
 		Mat image = Imgcodecs.imread(inFile);
 		Mat templ = Imgcodecs.imread(templateFile);
 		//creating result Matrix
