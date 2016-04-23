@@ -8,7 +8,7 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 public class MatchTemplate {
-	static final String filepath = "/Users/carlo/Maturaarbeit/Screenshots/";
+	static final String filepath = "C:\\Users\\carlo\\Desktop\\Maturaarbeit\\Screenshots\\";
 	public static void main(String[] args) throws Exception {
 		//importing library and images
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
