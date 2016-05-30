@@ -13,8 +13,8 @@ public class NeuralNet {
 	private double learningRate;
 	private double targetError;
 	private double trainingsError;
-	private TrainingTypesENUM trainType;
-	private ActivationFncENUM activationFnc;
+	private Training.TrainingTypesENUM trainType;
+	private Training.ActivationFncENUM activationFnc;
 	private ArrayList <Double> listOfMSE = new ArrayList<Double>();
 	
 	
