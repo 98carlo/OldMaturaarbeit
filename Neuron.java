@@ -14,28 +14,25 @@ public class Neuron {
 	}
 	
 	public void setListOfWeightIn (ArrayList<Double>listOfWeightIn){
-		
-		for (int i = 0; i<2;i++){
-			listOfWeightIn.set(i, Math.random());
-		}
+		//set the WeightsIn equal to the parameters
+		//used to change the Weights
+		this.ListofWeightIn = listOfWeightIn;
 		
 	}
 	
 	public void setListOfWeightOut(ArrayList <Double> listOfWeightOut){
-		
-		for (int i = 0;i<2; i++){
-			listOfWeightOut.set(i, Math.random());
-		}
-		
+		//set the WeightsOut equal to the parameters
+		//used to change the Weights
+		this.ListofWeightOut = listOfWeightOut;
 	}
 	
 	public ArrayList<Double>getlistOfWeightIn(){
-		
-		return ListofWeightIn;
+		//used for getting the current WeightsIn
+		return this.ListofWeightIn;
 	}
 	
 	public ArrayList<Double>getListOfWeightOut(){
-		
-		return ListofWeightOut;
+		//used for getting the current WeightsOut
+		return this.ListofWeightOut;
 	}
 }
