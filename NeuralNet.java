@@ -7,15 +7,16 @@ public class NeuralNet {
 	private ArrayList <HiddenLayer> listOfHiddenLayer;
 	private OutputLayer outputLayer;
 	private int numberOfHiddenLayers;
-	private double[] [] trainSet;
-	private double [] realOutputSet;
 	private int maxEpochs;
+	private double[] [] trainSet;
 	private double learningRate;
+	/*
+	private double [] realOutputSet;
 	private double targetError;
 	private double trainingsError;
 	private Training.TrainingTypesENUM trainType;
 	private Training.ActivationFncENUM activationFnc;
-	private ArrayList <Double> listOfMSE = new ArrayList<Double>();
+	private ArrayList <Double> listOfMSE = new ArrayList<Double>();*/
 	
 	
 	
@@ -31,7 +32,7 @@ public class NeuralNet {
 	public void initNet(){
 		
 		inputLayer.initLayer(inputLayer);
-		hiddenLayer.initLayer(hiddenLayer, listOfHiddenLayer, outputLayer);
+		hiddenLayer.initLayer(hiddenLayer, listOfHiddenLayer, inputLayer, outputLayer);
 		outputLayer.initLayer(outputLayer);
 		
 	}
@@ -44,15 +45,56 @@ public class NeuralNet {
 	
 	}
 	
-	public NeuralNet trainNet (NeuralNet n){
-		return n;
+	public double [] [] getTrainSet(){
+		return this.trainSet;
 	}
 	
-	public void printTrainedNetResult (NeuralNet n){
+	public int getMaxEpochs(){
+		return this.maxEpochs;
+	}
+	
+
+	public void setMaxEpochs(int maxEpochs){
+		this.maxEpochs = maxEpochs;
+	}
+	
+	public InputLayer getInputLayer() {
+		
+		return this.inputLayer;
+	}
+	
+	public OutputLayer getOutputLayer(){
+		
+		return this.outputLayer;
+	}
+
+	public void setInputLayer(InputLayer inputLayer) {
+		
+		this.inputLayer = inputLayer;
 		
 	}
 	
-	public double [] [] getTrainSet(){
+	public void setLearningRate (double learningRate){
+		
+		this.learningRate = learningRate;
+	
+	}
+	
+	public double getLearningRate(){
+		
+		return this.learningRate;
+	
+	}
+	
+	/*public NeuralNet trainNet (NeuralNet n){
+		return n;
+	}
+	
+	public void setTargetError (double targetError){
+		
+	}
+	
+	public void printTrainedNetResult (NeuralNet n){
 		
 	}
 	
@@ -64,27 +106,7 @@ public class NeuralNet {
 		
 	}
 	
-	public int getMaxEpochs(){
-		
-	}
-	
-	public void setMaxEpochs(int maxEpochs){
-		
-	}
-	
 	public double getTargetError(){
-		
-	}
-	
-	public void setTargetError (double targetError){
-		
-	}
-	
-	public double getLearningRate(){
-		
-	}
-	
-	public void setLearningRate (double learningRate){
 		
 	}
 	
@@ -114,22 +136,8 @@ public class NeuralNet {
 	
 	public void setListOfMSE(ArrayList<Double> listOfMSE){
 		
-	}
+	}*/
 
-	public InputLayer getInputLayer() {
-		
-		return inputLayer;
-	}
 	
-	public OutputLayer getOutputLayer(){
-		
-		return outputLayer;
-	}
-
-	public void setInputLayer(InputLayer inputLayer) {
-		
-		this.inputLayer = inputLayer;
-		
-	}
 	
 }
