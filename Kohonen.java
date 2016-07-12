@@ -2,22 +2,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-//probably the algorithm I'm going to use for my project
-//overrides the method from the Training class
+//algorithm which is mainly used for clustering data
+//perfect for behavior predictions 
 
 public class Kohonen {
 	
 	public NeuralNet train (NeuralNet n){
-		
-		int rows = n.getTrainSet().length;
-		int cols = n.getTrainSet()[0].length;
+		//initiating the NeuralNetwork
+		initNet(n);
+		//getting the TrainSet and its Length
+		double [] [] trainData = n.getTrainSet();
+		int rows = trainData.length;
+		int cols = trainData[0].length;
+		//Kohonen works mostly with the distances of the values
 		ArrayList <Double> listOfDistances = new ArrayList <Double>();
-		
+		//stops when it reaches the MaxEpochs
+		//would be also able to stop with a certain amount of Weight-updates but it's a lot harder to control
 		for (int epoch = 0; epoch < n.getMaxEpochs(); epoch++){
 			
 			for (int row_i = 0; row_i < rows; row_i++){
+				//trainData needs to be implemented
+				//create local variable and import trainData
+				//declare the best distance
 				listOfDistances = calcEuclideanDistance(n, trainData, row_i);
+				//Kohonen works with BMU (best matching Unit) here called winnerNeuron for a less confusing code
 				int winnerNeuron = listOfDistances.indexOf (Collections.min(listOfDistances));
+				//fixing the Weights of the BMU and the Weights/Neurons next to it
 				n = fixWinnerWeights (n, winnerNeuron, row_i);
 			}
 		}
@@ -25,6 +35,10 @@ public class Kohonen {
 	}
 	
 	private NeuralNet initNet (NeuralNet n){
+		//initiating the Neural Network
+		//whole code is in the NeuralNet class
+		n.initNet();
+		//returns the initialized Network
 		return n;
 	}
 	
@@ -47,6 +61,7 @@ public class Kohonen {
 	}
 	
 	private NeuralNet fixWinnerWeights (NeuralNet n, int winnerNeuron, int trainSetRow){
+		//fixing the Weight of the BMU and its adjacent Neurons and their Weights
 		int start, last;
 		start = winnerNeuron * n.getInputLayer().getNumberOfNeuronsInLayer();
 		if (start < 0){
