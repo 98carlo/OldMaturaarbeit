@@ -62,11 +62,14 @@ public class Kohonen {
 	
 	private NeuralNet fixWinnerWeights (NeuralNet n, int winnerNeuron, int trainSetRow){
 		//fixing the Weight of the BMU and its adjacent Neurons and their Weights
+		//integers used for declaring where to start searching and where to end
 		int start, last;
+		//defining start and last
 		start = winnerNeuron * n.getInputLayer().getNumberOfNeuronsInLayer();
-		if (start < 0){
+		/*if (start < 0){
 			start = 0;
-		}
+		}*/
+		
 		last = start + n.getInputLayer().getNumberOfNeuronsInLayer();
 		List<Double>listOfOldWeights = new ArrayList<Double>();
 		listOfOldWeights = n.getInputLayer().getlistOfNeurons().get(0).getListOfWeightOut().subList(start, last);
