@@ -5,17 +5,21 @@ public class InputLayer {
 	private int numberOfNeuronsInLayer;
 	private static ArrayList <Neuron> ListOfNeurons;
 	
-	@SuppressWarnings("null")
-	public void initLayer (InputLayer inputLayer){
-		
+	public InputLayer initLayer (InputLayer inputLayer){
+		inputLayer = new InputLayer();
+		ArrayList <Double> weightIn = new ArrayList <Double> ();
 		for (int i = 0; i < numberOfNeuronsInLayer; i++){
-			ArrayList <Double> inputLayerNeurons = null;
-			inputLayerNeurons.add(Math.random());
+			Neuron neuron = new Neuron();
+			double WeightIn = neuron.initNeuron();
+			weightIn.clear();
+			weightIn.add(WeightIn);
+			neuron.setListOfWeightIn(weightIn);
+			ListOfNeurons.add(neuron);
 		}
-		
+		return inputLayer;	                                                                                          
 	} 
 	
-	public void printLayer(InputLayer inputLayer){
+	void printLayer(InputLayer inputLayer){
 		System.out.println("------ InputLayer ------");
 		System.out.println(ListOfNeurons);
 	}
@@ -30,13 +34,13 @@ public class InputLayer {
 
 	public void setListOfNeurons (ArrayList<Neuron> teachNeuronsOfLayer) {
 		 for (int i = 0; i < numberOfNeuronsInLayer; i++){
-			 this.ListOfNeurons.add(i, teachNeuronsOfLayer.get(i));
+			 ListOfNeurons.add(i, teachNeuronsOfLayer.get(i));
 		 }
 		
 	}
 
 	public ArrayList<Neuron> getlistOfNeurons() {
-		return this.ListOfNeurons;
+		return ListOfNeurons;
 	}
 
 }
