@@ -36,7 +36,12 @@ public class HiddenLayer {
 	}
 	
 	public void printLayer (ArrayList <HiddenLayer> listOfHiddenLayer){
-		
+		for (int i = 0; i < listOfHiddenLayer.size(); i++){
+			int x = i++;
+			HiddenLayer hiddenLayer = listOfHiddenLayer.get(i);
+			System.out.println(x + " Hiddenlayer");
+			System.out.println(hiddenLayer);
+		}
 	}
 
 }
