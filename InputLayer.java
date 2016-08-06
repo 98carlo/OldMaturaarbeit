@@ -21,7 +21,7 @@ public class InputLayer {
 	
 	void printLayer(InputLayer inputLayer){
 		System.out.println("------ InputLayer ------");
-		System.out.println(ListOfNeurons);
+		System.out.println(inputLayer.toString());
 	}
 	
 	public void setNumberOfNeuronsInLayer (int numberOfNeuronsInLayer){
