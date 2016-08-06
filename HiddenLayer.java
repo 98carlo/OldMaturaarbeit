@@ -1,15 +1,12 @@
 import java.util.ArrayList;
 
 public class HiddenLayer {
-
 	
-	public ArrayList <HiddenLayer> initLayer (HiddenLayer hiddenLayer,ArrayList <HiddenLayer> listOfHiddenLayer, OutputLayer outputLayer){
-		int numberOfHiddenLayers = 3;
+	public ArrayList <HiddenLayer> initLayer (HiddenLayer hiddenLayer,ArrayList <HiddenLayer> listOfHiddenLayer,InputLayer inputLayer, OutputLayer outputLayer){
 		int NumberOfNeuronsInInputLayer = inputLayer.getNumberOfNeuronsInLayer();
 		int NumberOfNeuronsInOutputLayer = outputLayer.getNumberOfNeuronsInLayer();
 		ArrayList <Double> weightIn = new ArrayList <Double> ();
 		ArrayList <Double> weightOut = new ArrayList <Double> ();
-		for (int j = 0; j < numberOfHiddenLayers ; j++){
 		hiddenLayer = new HiddenLayer();
 		ArrayList <Neuron> ListOfNeurons = new ArrayList <Neuron> ();
 		Layer layer = new Layer ();
@@ -25,12 +22,14 @@ public class HiddenLayer {
 			double WeightOut = neuron.initNeuron();
 			weightOut.add(WeightOut);
 		}
+		 
 		neuron.setListOfWeightIn(weightIn);
 		neuron.setListOfWeightOut(weightOut);
 		ListOfNeurons.add(neuron);
 		}
 		listOfHiddenLayer.add(hiddenLayer);
-		}
+		
+		
 		return listOfHiddenLayer;
 		
 	}
@@ -39,8 +38,8 @@ public class HiddenLayer {
 		for (int i = 0; i < listOfHiddenLayer.size(); i++){
 			int x = i++;
 			HiddenLayer hiddenLayer = listOfHiddenLayer.get(i);
-			System.out.println(x + " Hiddenlayer");
-			System.out.println(hiddenLayer);
+			System.out.println(x + ". Hiddenlayer");
+			System.out.println(hiddenLayer.toString());
 		}
 	}
 
