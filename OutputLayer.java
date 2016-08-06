@@ -19,7 +19,8 @@ public class OutputLayer {
 		return outputLayer;
 	
 	public void printLayer (OutputLayer outputLayer){
-		
+		System.out.println("----OutputLayer----");
+		System.out.println(outputLayer.toString());
 	}
 	
 	public void setNumberOfNeuronsInLayer (int numberOfNeuronsInLayer){
