@@ -21,5 +21,14 @@ public class OutputLayer {
 	public void printLayer (OutputLayer outputLayer){
 		
 	}
+	
+	public void setNumberOfNeuronsInLayer (int numberOfNeuronsInLayer){
+		NumberOfNeuronsInLayer = numberOfNeuronsInLayer;
+		ListOfNeurons.ensureCapacity(NumberOfNeuronsInLayer);
+	}
+
+	public int getNumberOfNeuronsInLayer() {
+		return this.NumberOfNeuronsInLayer;
+	}
 
 }
